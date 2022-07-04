@@ -31,7 +31,6 @@ class Search extends React.Component {
         <button
           type="submit"
           data-testid="search-artist-button"
-          onClick={ () => this.userValidation({ name }) }
           disabled={ !validateLogin }
         >
           Pesquisar
