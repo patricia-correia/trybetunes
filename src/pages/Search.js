@@ -1,9 +1,43 @@
 import React from 'react';
 import Header from '../components/Header';
 
+const minimoCharacter = 2;
+
 class Search extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      name: '',
+    };
+  }
+
+  handelInput = ({ target }) => this.setState({ name: target.value });
+
   render() {
-    return (<div data-testid="page-search"><Header /></div>);
+    const { name } = this.state;
+    const validateLogin = name.length >= minimoCharacter;
+    return (
+      <div data-testid="page-search">
+        <Header />
+
+        <label htmlFor="search">
+          <input
+            data-testid="search-artist-input"
+            name="search"
+            placeholder="search"
+            onChange={ this.handelInput }
+          />
+        </label>
+        <button
+          type="submit"
+          data-testid="search-artist-button"
+          onClick={ () => this.userValidation({ name }) }
+          disabled={ !validateLogin }
+        >
+          Pesquisar
+        </button>
+      </div>
+    );
   }
 }
 
