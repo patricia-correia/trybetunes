@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { createUser } from '../services/userAPI';
 import Carregando from '../components/Carregando';
+import Header from '../components/Header';
 
 const minimoCharacter = 3;
 
@@ -36,8 +37,9 @@ class Login extends React.Component {
 
     return (
       <div data-testid="page-login">
+        <Header />
         <fildset>
-          Login
+          <div>Login</div>
           <label htmlFor="login">
             Name:
             <input
@@ -47,14 +49,16 @@ class Login extends React.Component {
               onChange={ this.handelInput }
             />
           </label>
-          <button
-            type="submit"
-            onClick={ () => this.userValidation({ name }) }
-            disabled={ !validateLogin }
-            data-testid="login-submit-button"
-          >
-            Entrar
-          </button>
+          <div>
+            <button
+              type="submit"
+              onClick={ () => this.userValidation({ name }) }
+              disabled={ !validateLogin }
+              data-testid="login-submit-button"
+            >
+              Entrar
+            </button>
+          </div>
         </fildset>
       </div>
     );
