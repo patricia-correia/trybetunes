@@ -7,7 +7,7 @@ class Header extends React.Component {
   constructor() {
     super();
     this.state = {
-      username: 'patricia',
+      username: '',
       carregando: false,
     };
   }

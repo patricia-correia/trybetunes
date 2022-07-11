@@ -51,7 +51,7 @@ class Login extends React.Component {
           </label>
           <div>
             <button
-              type="submit"
+              type="button"
               onClick={ () => this.userValidation({ name }) }
               disabled={ !validateLogin }
               data-testid="login-submit-button"
