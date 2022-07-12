@@ -10,6 +10,7 @@ class Album extends React.Component {
     this.state = {
       handleAlbum: [],
       indexValue: [],
+      albumId: '',
     };
   }
 
@@ -24,11 +25,12 @@ class Album extends React.Component {
     this.setState({
       handleAlbum: musicsTheAlbum,
       indexValue: musicsTheAlbum[0],
+      albumId: musicsTheAlbum[0].collectionId,
     });
   }
 
   render() {
-    const { handleAlbum, indexValue } = this.state;
+    const { handleAlbum, indexValue, albumId, index } = this.state;
     return (
       <div data-testid="page-album">
         <Header />
@@ -53,6 +55,9 @@ class Album extends React.Component {
             <MusicCard
               trackName={ music.trackName }
               previewUrl={ music.previewUrl }
+              albumId={ albumId }
+              trackIndex={ index }
+              trackId={ music.trackId }
               key={ music.trackName }
             />
           ))
