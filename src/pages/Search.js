@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
 import Carregando from '../components/Carregando';
+import Header from '../components/Header';
 
 class Search extends React.Component {
   constructor() {
@@ -82,6 +83,7 @@ class Search extends React.Component {
 
     return (
       <div data-testid="page-search">
+        <Header />
         <div>
           {
             loading ? <Carregando /> : searchResult
