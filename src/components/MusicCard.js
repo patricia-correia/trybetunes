@@ -15,6 +15,7 @@ class MusicCard extends React.Component {
   }
 
   componentDidMount() {
+    this.checkedCheckbox();
   }
 
   handleChange = ({ target }) => {
@@ -38,6 +39,12 @@ class MusicCard extends React.Component {
           loading: false,
         });
       });
+  }
+
+  checkedCheckbox = () => {
+    const { favoritedSongs, trackId } = this.props;
+    const check = favoritedSongs.some((track) => track.trackId === trackId);
+    this.setState({ favorite: check });
   }
 
   render() {
@@ -89,6 +96,9 @@ MusicCard.propTypes = {
   trackName: PropTypes.string.isRequired,
   previewUrl: PropTypes.string.isRequired,
   trackId: PropTypes.number.isRequired,
+  favoritedSongs: PropTypes.arrayOf(
+    PropTypes.object.isRequired,
+  ).isRequired,
 };
 
 export default MusicCard;
