@@ -36,35 +36,38 @@ class Album extends React.Component {
     return (
       <div data-testid="page-album">
         <Header />
-        {
-          <section>
-            <img src={ indexValue.artworkUrl100 } alt={ indexValue.collectionName } />
-            <p data-testid="album-name">
-              {' '}
-              { indexValue.collectionName }
-              {' '}
-            </p>
-            <p data-testid="artist-name">
-              {' '}
-              { indexValue.artistName }
-              {' '}
-            </p>
-          </section>
-        }
+        <div>
+          {
+            <section>
+              <img src={ indexValue.artworkUrl100 } alt={ indexValue.collectionName } />
+              <p data-testid="album-name">
+                {' '}
+                { indexValue.collectionName }
+                {' '}
+              </p>
+              <p data-testid="artist-name">
+                {' '}
+                { indexValue.artistName }
+                {' '}
+              </p>
+            </section>
+          }
 
-        {
-          handleAlbum.slice(1).map((music) => (
-            <MusicCard
-              trackName={ music.trackName }
-              previewUrl={ music.previewUrl }
-              albumId={ albumId }
-              trackIndex={ index }
-              trackId={ music.trackId }
-              key={ music.trackName }
-            />
-          ))
-        }
-      </div>);
+          {
+            handleAlbum.slice(1).map((music) => (
+              <MusicCard
+                trackName={ music.trackName }
+                previewUrl={ music.previewUrl }
+                albumId={ albumId }
+                trackIndex={ index }
+                trackId={ music.trackId }
+                key={ music.trackName }
+              />
+            ))
+          }
+        </div>
+      </div>
+    );
   }
 }
 

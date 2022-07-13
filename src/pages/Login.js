@@ -38,7 +38,7 @@ class Login extends React.Component {
     return (
       <div data-testid="page-login">
         <Header />
-        <fildset>
+        <form>
           <div>Login</div>
           <label htmlFor="login">
             Name:
@@ -59,7 +59,7 @@ class Login extends React.Component {
               Entrar
             </button>
           </div>
-        </fildset>
+        </form>
       </div>
     );
   }
