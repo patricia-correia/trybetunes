@@ -32,7 +32,7 @@ class Album extends React.Component {
   }
 
   render() {
-    const { handleAlbum, indexValue, favoritedSongs, index } = this.state;
+    const { handleAlbum, indexValue, favoritedSongs } = this.state;
     return (
       <div data-testid="page-album">
         <Header />
@@ -41,14 +41,10 @@ class Album extends React.Component {
             <section>
               <img src={ indexValue.artworkUrl100 } alt={ indexValue.collectionName } />
               <p data-testid="album-name">
-                {' '}
                 { indexValue.collectionName }
-                {' '}
               </p>
               <p data-testid="artist-name">
-                {' '}
                 { indexValue.artistName }
-                {' '}
               </p>
             </section>
           }
@@ -59,7 +55,6 @@ class Album extends React.Component {
                 trackName={ music.trackName }
                 previewUrl={ music.previewUrl }
                 favoritedSongs={ favoritedSongs }
-                trackIndex={ index }
                 trackId={ music.trackId }
                 key={ music.trackName }
               />
