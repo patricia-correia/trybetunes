@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { getUser } from '../services/userAPI';
 import Carregando from '../components/Carregando';
+import Header from '../components/Header';
 
 class Profile extends React.Component {
   constructor() {
@@ -59,6 +60,7 @@ class Profile extends React.Component {
     );
     return (
       <div data-testid="page-profile">
+        <Header />
         {
           loading === '' ? <Carregando /> : showInformations
         }

@@ -1,5 +1,6 @@
 import React from 'react';
 import Carregando from '../components/Carregando';
+import Header from '../components/Header';
 import MusicCard from '../components/MusicCard';
 import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 
@@ -33,6 +34,7 @@ class Favorites extends React.Component {
     const { listFavoriteSongs, loading } = this.state;
     return (
       <div data-testid="page-favorites">
+        <Header />
         <section>
           {
             loading ? <Carregando />
