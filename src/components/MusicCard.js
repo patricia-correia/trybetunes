@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Carregando from './Carregando';
-import getMusics from '../services/musicsAPI';
 import { addSong, removeSong } from '../services/favoriteSongsAPI';
 
 class MusicCard extends React.Component {
@@ -27,14 +26,25 @@ class MusicCard extends React.Component {
   }
 
   getFaveSongs = async () => {
-    const { trackId } = this.props;
     this.setState((prevState) => ({ favorite: !prevState, loading: true }),
       async () => {
+        const { favoriteList, previewUrl, trackId, trackName } = this.props;
         const { favorite } = this.state;
-        const theObjectOfMusic = await getMusics(trackId);
         if (favorite) {
-          await addSong(theObjectOfMusic[0]);
-        } else await removeSong(theObjectOfMusic[0]);
+          await addSong({
+            previewUrl,
+            trackId,
+            trackName,
+          });
+        } else {
+          favoriteList();
+          await removeSong({
+            previewUrl,
+            trackId,
+            trackName,
+          });
+        }
+        favoriteList();
         this.setState({
           loading: false,
         });
@@ -50,8 +60,8 @@ class MusicCard extends React.Component {
   render() {
     const { trackName, previewUrl, trackId } = this.props;
     const { favorite, loading } = this.state;
-    return (
-      <section>
+    const shower = (
+      <div>
         <div>
           <p>
             {' '}
@@ -81,11 +91,15 @@ class MusicCard extends React.Component {
                 type="checkbox"
               />
             </label>
-            {
-              loading && <Carregando />
-            }
           </form>
         </div>
+      </div>
+    );
+    return (
+      <section>
+        {
+          loading ? <Carregando /> : shower
+        }
       </section>
 
     );
@@ -96,6 +110,7 @@ MusicCard.propTypes = {
   trackName: PropTypes.string.isRequired,
   previewUrl: PropTypes.string.isRequired,
   trackId: PropTypes.number.isRequired,
+  favoriteList: PropTypes.func.isRequired,
   favoritedSongs: PropTypes.arrayOf(
     PropTypes.object.isRequired,
   ).isRequired,

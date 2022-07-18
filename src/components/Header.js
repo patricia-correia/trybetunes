@@ -47,12 +47,6 @@ class Header extends React.Component {
         >
           profile
         </NavLink>
-        <NavLink
-          to="/profile/edit"
-          activeClassName="selected"
-        >
-          editar perfil
-        </NavLink>
       </header>);
   }
 }

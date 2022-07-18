@@ -56,6 +56,7 @@ class Album extends React.Component {
                 previewUrl={ music.previewUrl }
                 favoritedSongs={ favoritedSongs }
                 trackId={ music.trackId }
+                favoriteList={ () => { } }
                 key={ music.trackName }
               />
             ))
@@ -66,16 +67,12 @@ class Album extends React.Component {
   }
 }
 
-Album.defaultProps = {
-  match: {},
-};
-
 Album.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
       id: PropTypes.string.isRequired,
     }),
   }),
-};
+}.isRequired;
 
 export default Album;
