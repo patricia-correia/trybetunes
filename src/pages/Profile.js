@@ -44,7 +44,7 @@ class Profile extends React.Component {
 
   render() {
     const { userName, userEmail, userImage, userDescription, loading } = this.state;
-    const showInformations = (
+    const informations = (
       <div>
         <img data-testid="profile-image" src={ userImage } alt="foto de perfil" />
         <p>
@@ -61,8 +61,11 @@ class Profile extends React.Component {
     return (
       <div data-testid="page-profile">
         <Header />
+        <p>
+          {userName}
+        </p>
         {
-          loading === '' ? <Carregando /> : showInformations
+          loading === '' ? <Carregando /> : informations
         }
         <nav>
           <Link to="/profile/edit">

@@ -16,7 +16,7 @@ class ProfileEdit extends React.Component {
   }
 
   componentDidMount() {
-    this.showUserProfile();
+    this.UserProfile();
   }
 
   handleChange = ({ target }) => {
@@ -26,7 +26,7 @@ class ProfileEdit extends React.Component {
     });
   }
 
-  validateSubmitBtn = () => {
+  handleSubmitBtn = () => {
     const emailRegex = /\S+@\S+\.\S+/;
     const { userEmail } = this.state;
     if (emailRegex.test(userEmail)) {
@@ -35,7 +35,7 @@ class ProfileEdit extends React.Component {
     return true;
   }
 
-  showUserProfile = async () => {
+  UserProfile = async () => {
     const check = await getUser();
     this.setState({
       userName: check.name,
@@ -112,7 +112,7 @@ class ProfileEdit extends React.Component {
           <button
             type="button"
             data-testid="edit-button-save"
-            disabled={ this.validateSubmitBtn() }
+            disabled={ this.handleSubmitBtn() }
             onClick={ this.handleSubmit }
           >
             Salvar
